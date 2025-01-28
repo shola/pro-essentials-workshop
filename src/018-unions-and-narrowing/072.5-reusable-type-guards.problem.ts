@@ -1,8 +1,15 @@
 import { Equal, Expect } from "@total-typescript/helpers";
 import { describe, expect, it } from "vitest";
 
+// It seems like the type predicate is optional for user-defined
+// type guards. Adding it anyway for completeness sake.
+function isStringArray(value: unknown): value is string[] {
+  return (
+    Array.isArray(value) && value.every((item) => typeof item === "string")
+  );
+}
 const joinNames = (value: unknown) => {
-  if (Array.isArray(value) && value.every((item) => typeof item === "string")) {
+  if (isStringArray(value)) {
     return value.join(" ");
   }
 
@@ -10,7 +17,7 @@ const joinNames = (value: unknown) => {
 };
 
 const createSections = (value: unknown) => {
-  if (Array.isArray(value) && value.every((item) => typeof item === "string")) {
+  if (isStringArray(value)) {
     return value.map((item) => `Section: ${item}`);
   }
 
@@ -27,6 +34,7 @@ describe("joinNames", () => {
   });
 
   it("Should error when anything else is passed in", () => {
+    // Verify that invoking a function throws an error
     expect(() => joinNames("John")).toThrow("Parsing error!");
     expect(() => joinNames(123)).toThrow("Parsing error!");
   });

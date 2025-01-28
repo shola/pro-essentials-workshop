@@ -11,5 +11,9 @@
   },
   "devDependencies": {
     "vite": "^4.4.5"
+  },
+  "dependencies": {
+    "npm-run-all": "^4.1.5",
+    "vite-plugin-checker": "^0.8.0"
   }
 }

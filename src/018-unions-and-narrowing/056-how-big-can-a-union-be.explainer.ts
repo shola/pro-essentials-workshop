@@ -26,4 +26,7 @@ type Alphabet =
   | "y"
   | "z";
 
+// Elegant way to create a type representing permutations.
+
+type Permutations = `${Alphabet}${Alphabet}${Alphabet}`;
 type TooBig = `${Alphabet}${Alphabet}${Alphabet}${Alphabet}`;

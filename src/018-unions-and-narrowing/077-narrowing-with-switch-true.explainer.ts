@@ -15,6 +15,9 @@ type Square = {
 type Shape = Circle | Square;
 
 function calculateArea(shape: Shape) {
+  // the `switch (true)` pattern requires changing each case statement
+  // to a boolean expression that will execute when the boolean val is true.
+  // This is basically an esoteric if/else statement.
   switch (true) {
     case shape.kind === "circle": {
       return Math.PI * shape.radius * shape.radius;

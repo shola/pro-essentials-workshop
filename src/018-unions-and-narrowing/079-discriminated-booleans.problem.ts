@@ -4,7 +4,9 @@ type User = {
   id: string;
 };
 
-type ApiResponse = [boolean, User[] | string];
+type ApiResponse =
+  | [isSuccess: true, json: Array<User>]
+  | [isSuccess: false, errorMsg: string];
 
 async function fetchData(): Promise<ApiResponse> {
   try {
@@ -17,7 +19,9 @@ async function fetchData(): Promise<ApiResponse> {
       ];
     }
 
-    const data = await response.json();
+    const data: Array<User> = await response.json();
+    // This data should probably be checked with zod and throw
+    // if the structure doesn't match.
     return [true, data];
   } catch (error) {
     return [false, "An error occurred"];

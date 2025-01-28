@@ -7,3 +7,5 @@
 ## Problem
 
 Try opening the `index.html` file in your browser. You'll see that it doesn't work. Why is that?
+
+- Because browsers can't load raw typescript files. They need to be transpiled to javascript.

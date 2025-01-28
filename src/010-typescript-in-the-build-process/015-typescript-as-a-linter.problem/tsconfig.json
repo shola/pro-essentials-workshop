@@ -14,7 +14,7 @@
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
+    "noEmit": true, /* use vite to handle typescript transpiling, just use typescript as a type checker */
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,

@@ -2,6 +2,9 @@ import { expect, it } from "vitest";
 
 function validateUsername(username: string | null): boolean {
   // Why isn't this working?
+  // Casting to boolean doesn't isolate the case
+  // where the value is a string. Since string
+  // can return false if empty, or true if not.
   const isUsernameOK = Boolean(username);
 
   if (isUsernameOK) {

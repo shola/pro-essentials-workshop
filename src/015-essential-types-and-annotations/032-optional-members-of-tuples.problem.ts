@@ -1,10 +1,11 @@
 import { Expect, Equal } from "@total-typescript/helpers";
 
-const goToLocation = (coordinates: Array<number>) => {
-  const latitude = coordinates[0];
-  const longitude = coordinates[1];
-  const elevation = coordinates[2];
+// Create a tuple type that makes it clear what each
+// value signifies.
+type Coordinate = [latitude: number, longitude: number, elevation?: number]
 
+// Destructure the values
+const goToLocation = ([latitude, longitude, elevation]: Coordinate) => {
   // Do something with latitude, longitude, and elevation in here
 
   type tests = [

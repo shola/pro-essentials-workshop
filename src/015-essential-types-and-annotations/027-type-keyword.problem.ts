@@ -1,14 +1,19 @@
 import { Expect, Equal } from "@total-typescript/helpers";
 import { expect, it } from "vitest";
 
-const getRectangleArea = (rectangle: { width: number; height: number }) => {
+// Prefer interfaces over intersection types because error messaging
+// is more concise. Extending interfaces will throw errors if
+// the merged types are incompatible.
+interface Rectangle {
+  width: number;
+  height: number;
+}
+
+const getRectangleArea = (rectangle: Rectangle) => {
   return rectangle.width * rectangle.height;
 };
 
-const getRectanglePerimeter = (rectangle: {
-  width: number;
-  height: number;
-}) => {
+const getRectanglePerimeter = (rectangle: Rectangle) => {
   return 2 * (rectangle.width + rectangle.height);
 };
 

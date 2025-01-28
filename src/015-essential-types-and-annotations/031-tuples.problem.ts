@@ -1,8 +1,10 @@
 import { Expect, Equal } from "@total-typescript/helpers";
 
-const setRange = (range: Array<number>) => {
-  const x = range[0];
-  const y = range[1];
+// Since there must be 2 values in the tuple, and the first is x, and second y,
+// just destructure the param to give those values more contextual meaning.
+const setRange = ([x, y]: [number, number]) => {
+  // const x = range[0];
+  // const y = range[1];
 
   // Do something with x and y in here
 

@@ -21,6 +21,6 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   </div>
 `;
 
-let num: string = 123;
+// let num: number = 123;
 
 setupCounter(document.querySelector<HTMLButtonElement>("#counter")!);

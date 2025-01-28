@@ -12,7 +12,10 @@ type APIResponse =
 
 const handleResponse = (response: APIResponse) => {
   // How do we check if 'data' is in the response?
-  if (true) {
+  // Narrow between union types by checking for membership of
+  // particular fields. Similar to a discriminated union,
+  // although there is no discriminant property on each type.
+  if ("data" in response) {
     return response.data.id;
   } else {
     throw new Error(response.error);

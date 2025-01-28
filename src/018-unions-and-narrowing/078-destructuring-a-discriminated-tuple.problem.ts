@@ -4,7 +4,7 @@ type User = {
   id: string;
 };
 
-type ApiResponse = [string, User[] | string];
+type ApiResponse = ["error", string] | ["success", User[]];
 
 async function fetchData(): Promise<ApiResponse> {
   try {
@@ -17,7 +17,7 @@ async function fetchData(): Promise<ApiResponse> {
       ];
     }
 
-    const data = await response.json();
+    const data: Array<User> = await response.json();
     return ["success", data];
   } catch (error) {
     return ["error", "An error occurred"];

@@ -2,7 +2,16 @@ import { Equal, Expect } from "@total-typescript/helpers";
 import { expect, it } from "vitest";
 
 const parseValue = (value: unknown) => {
-  if (true) {
+  // OMG type narrowing from `unknown` is ugly and verbose!
+  if (
+    typeof value === "object" &&
+    value &&
+    "data" in value &&
+    typeof value.data === "object" &&
+    value.data &&
+    "id" in value.data &&
+    typeof value.data.id === "string"
+  ) {
     return value.data.id;
   }
 
