@@ -1,18 +1,20 @@
 import { Extends, Expect } from "@total-typescript/helpers";
 
-type User = {
+interface Base {
   id: string;
   createdAt: Date;
   name: string;
-  email: string;
-};
+}
 
-type Product = {
-  id: string;
-  createdAt: Date;
-  name: string;
+interface User extends Base {}
+// Contrived, but this is how you extend an existing interface.
+interface User {
+  email: string;
+}
+
+interface Product extends Base {
   price: number;
-};
+}
 
 type tests = [
   Expect<

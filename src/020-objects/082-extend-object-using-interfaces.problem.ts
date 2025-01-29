@@ -1,19 +1,22 @@
 import { Extends, Expect } from "@total-typescript/helpers";
 
-type BaseEntity = {
+interface WithId {
   id: string;
+}
+interface WithCreatedAt {
   createdAt: Date;
-};
+}
 
-type User = {
+// Extend an interface with multiple interfaces
+interface User extends WithId, WithCreatedAt {
   name: string;
   email: string;
-} & BaseEntity;
+}
 
-type Product = {
+interface Product extends WithCreatedAt, WithId {
   name: string;
   price: number;
-} & BaseEntity;
+};
 
 type tests = [
   Expect<

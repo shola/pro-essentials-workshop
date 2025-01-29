@@ -1,6 +1,17 @@
 type Environment = "development" | "production" | "staging";
 
-type Configurations = unknown;
+// type Configurations = Record<
+//   Environment,
+//   { apiBaseUrl: string; timeout: number }
+// >;
+
+// this is the type that Record creates under the hood
+type Configurations = {
+  [Env in Environment]: {
+    apiBaseUrl: string;
+    timeout: number;
+  };
+};
 
 const configurations: Configurations = {
   development: {

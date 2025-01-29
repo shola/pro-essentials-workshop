@@ -3,9 +3,11 @@ const acceptAllNonPrimitiveTypes = (input: object) => {};
 acceptAllNonPrimitiveTypes({});
 acceptAllNonPrimitiveTypes([]);
 acceptAllNonPrimitiveTypes(() => {});
+// I forget that regexps are objects
 acceptAllNonPrimitiveTypes(/foo/);
 acceptAllNonPrimitiveTypes(new Error("foo"));
 
+// This one is surprising since `typeof null` returns `object`...
 acceptAllNonPrimitiveTypes(
   // @ts-expect-error
   null,

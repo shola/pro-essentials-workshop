@@ -6,8 +6,9 @@ interface User {
   email: string;
   role: string;
 }
+type MinimalUser = Pick<User, "name" | "email">;
 
-const fetchUser = async (): Promise<User> => {
+const fetchUser = async (): Promise<MinimalUser> => {
   const response = await fetch("/api/user");
   const user = await response.json();
   return user;

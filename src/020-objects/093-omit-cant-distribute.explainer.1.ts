@@ -23,9 +23,12 @@ type Product = {
 
 type Entity = User | Organisation | Product;
 
-type EntityWithoutId = Omit<Entity, "id">;
-//   ^?
+// if you pass a union type to a conditional type, the
+// conditional type will be applied to each member of
+// that union.
+type DistributedOmit<T, K extends PropertyKey> = T extends any ? Omit<T, K> : never;
 
+type EntityWithoutId = DistributedOmit<Entity, "id">;
 type test = Expect<
   Equal<
     EntityWithoutId,

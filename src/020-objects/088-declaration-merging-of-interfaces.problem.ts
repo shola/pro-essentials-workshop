@@ -1,6 +1,8 @@
-interface Logger {
-  log(message: string, level: number): void;
-}
+// Since this signature is never used, it's not needed
+// and should be remove from the interface declaration merge
+// interface Logger {
+//   log(message: string, level: number): void;
+// }
 
 interface Logger {
   log(message: string): void;
@@ -15,5 +17,5 @@ const myLogger: Logger = {
 myLogger.log(
   "My message",
   // @ts-expect-error Level is NOT needed
-  123,
+  123
 );

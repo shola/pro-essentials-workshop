@@ -1,6 +1,8 @@
 import { expect, it } from "vitest";
 
-const hasKey = (obj: object, key: string) => {
+// `PropertyKey` refers to the allowable union type
+// for an object key.
+const hasKey = (obj: object, key: PropertyKey) => {
   return obj.hasOwnProperty(key);
 };
 
