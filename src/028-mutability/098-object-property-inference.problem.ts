@@ -4,9 +4,13 @@ type ButtonAttributes = {
 
 const modifyButton = (attributes: ButtonAttributes) => {};
 
+// creating this as a readonly, const object, sets the value of `type`
+// to be "button", not string. Since that matches one of the strings in
+// ButtonAttributes['type'], this object is structurally a ButtonAttributes
+// type
 const buttonAttributes = {
   type: "button",
-};
+} as const;
 
 modifyButton(buttonAttributes);
 
@@ -14,7 +18,8 @@ modifyButton(buttonAttributes);
 
 const modifyButtons = (attributes: ButtonAttributes[]) => {};
 
-const buttonsToChange = [
+// Annotating the object is more straightforward and works
+const buttonsToChange: ButtonAttributes[] = [
   {
     type: "button",
   },

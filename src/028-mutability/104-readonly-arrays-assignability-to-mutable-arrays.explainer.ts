@@ -22,4 +22,7 @@ printNamesMutable(mutableNames);
 const readonlyNames = ["John", "Jane", "Mike"] as const;
 
 printNamesReadonly(readonlyNames);
-printNamesMutable(readonlyNames);
+// this is the easiest way to make a readonly array act like a mutable one.
+// This feels wrong. It's better to just not pass a readonly array as a mutable
+// one.
+printNamesMutable(readonlyNames as unknown as string[]);
