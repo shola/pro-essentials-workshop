@@ -1,7 +1,12 @@
 import { expect, it } from "vitest";
 
 class CanvasNode {
-  constructor(private x: number, private y: number) {}
+  // setting constructor param types to be private or readonly
+  // will create them as instance variables
+  constructor(
+    private x: number,
+    private y: number
+  ) {}
 
   move(x: number, y: number) {
     this.x = x;
