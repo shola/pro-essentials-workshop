@@ -7,10 +7,16 @@ type PossibleErrors = SyntaxError | DOMException;
 const getUserFromLocalStorage = (id: string) => {
   const user = localStorage.getItem(id);
   if (!user) {
-    return undefined;
+    return {
+      success: true,
+      data: undefined,
+    };
   }
 
-  return JSON.parse(user);
+  return {
+    success: true,
+    data: JSON.parse(user),
+  };
 };
 
 try {
@@ -18,4 +24,8 @@ try {
 } catch (
   // How do we make this typed as PossibleErrors?
   e
-) {}
+) {
+  if (e instanceof DOMException || e instanceof SyntaxError) {
+    console.error(e);
+  }
+}

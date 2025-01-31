@@ -21,7 +21,8 @@ const usersWithIds: User[] = users.map((user, index) => ({
 }));
 
 const userKeys = usersWithIds.map((user) => {
-  const keys = Object.keys(user);
+  // string is not assignable to type keyof User
+  const keys: Array<keyof typeof user> = Object.keys(user);
 
   type test = Expect<Equal<typeof keys, Array<"id" | "name">>>;
   return keys;
