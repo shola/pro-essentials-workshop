@@ -8,8 +8,12 @@ const findUsersByName = (
     name: string;
   }[],
 ) => {
-  if (searchParams.name) {
-    return users.filter((user) => user.name.includes(searchParams.name));
+  // If you ever see a non-null/undefined issue with an object's
+  // field, even after guarding against that falsey value, try
+  // deconstructing that field instead.
+  const { name } = searchParams;
+  if (name) {
+    return users.filter((user) => user.name.includes(name));
   }
 
   return users;

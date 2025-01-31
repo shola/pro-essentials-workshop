@@ -1,15 +1,15 @@
 // Uncomment this line to see a stricter JSON.parse!
-// import '@total-typescript/ts-reset'
+// import "@total-typescript/ts-reset";
 
 import { expect, it } from "vitest";
 
 const getObj = () => {
-  const obj: {
+  const obj = JSON.parse('{ "a": 123, "b": 456 }');
+
+  return obj as unknown as {
     a: number;
     b: number;
-  } = JSON.parse('{ "a": 123, "b": 456 }');
-
-  return obj;
+  };
 };
 
 it("Should return an obj", () => {

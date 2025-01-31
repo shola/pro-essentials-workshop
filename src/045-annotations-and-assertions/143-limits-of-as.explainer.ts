@@ -3,6 +3,9 @@
 
 const num1 = "hello" as number;
 
+// if you add an unknown/any/never type assertion, followed by
+// another type assertion, you completely disconnect from type
+// enforcement. Only do when you're 100% sure of the shape of data
 const num2 = "hello" as unknown as number;
 
 const num3 = "hello" as any as number;
