@@ -1,7 +1,12 @@
 import { Equal, Expect } from "@total-typescript/helpers";
 import { describe, expect, it } from "vitest";
 
-const hasDataAndId = (value: unknown) => {
+interface ValueWithId {
+  data: {
+    id: string;
+  };
+}
+const hasDataAndId = (value: unknown): value is ValueWithId => {
   return (
     typeof value === "object" &&
     value !== null &&

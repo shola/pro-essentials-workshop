@@ -1,21 +1,23 @@
 import { Equal, Expect } from "@total-typescript/helpers";
 import { expect, it } from "vitest";
 
-type PromiseFunc<TResult> = (...args: any[]) => Promise<TResult>;
+type PromiseFunc<TInput extends Array<any>, TResult> = (
+  ...args: TInput
+) => Promise<TResult>;
 
 const safeFunction =
-  <TResult>(func: PromiseFunc<TResult>) =>
-  async (...args: any[]) => {
-    try {
-      const result = await func(...args);
-      return result;
-    } catch (e) {
-      if (e instanceof Error) {
-        return e;
+  <TInput extends Array<any>, TResult>(func: PromiseFunc<TInput, TResult>) =>
+    async (...args: TInput) => {
+      try {
+        const result = await func(...args);
+        return result;
+      } catch (e) {
+        if (e instanceof Error) {
+          return e;
+        }
+        throw e;
       }
-      throw e;
-    }
-  };
+    };;;;;
 
 it("should return an error if the function throws", async () => {
   const func = safeFunction(async () => {
