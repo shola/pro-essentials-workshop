@@ -1,3 +1,3 @@
 export {};
 
-const myModuleFunc = () => {};
+export const myModuleFunc = () => {};

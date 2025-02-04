@@ -1,3 +1,3 @@
-export const myFunc = () => {
+export function myFunc() {
   return "Hello World!";
-};
+}
