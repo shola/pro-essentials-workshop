@@ -1,4 +1,5 @@
 {
+  // TODO: use this is as base tsconfig
   "compilerOptions": {
     /* Base Options: */
     "skipLibCheck": true,
@@ -8,10 +9,10 @@
     "resolveJsonModule": true, // Lets you import .json files
     "moduleDetection": "force",
     "isolatedModules": true,
-    "verbatimModuleSyntax": true,
+    "verbatimModuleSyntax": true, // drops type imports from js output
     /* Strictness */
     "strict": true,
-    "noUncheckedIndexedAccess": true,
+    "noUncheckedIndexedAccess": true, // value type will be unioned with undefined
     "noImplicitOverride": true,
     /* If transpiling with TypeScript: */
     "module": "NodeNext",
@@ -21,7 +22,7 @@
     "declaration": true,
     /* AND if you're building for a library in a monorepo: */
     "composite": true,
-    "declarationMap": true,
+    "declarationMap": true, // helps editor integration be smarter about finding definitions
     /* If NOT transpiling with TypeScript: */
     // "module": "Preserve",
     // "noEmit": true,
@@ -29,5 +30,6 @@
     "lib": ["es2022", "dom", "dom.iterable"]
     /* If your code doesn't run in the DOM: */
     // "lib": ["es2022"]
+    // "jsx": "react-jsx" // why wasn't this included in matt's suggested base?
   }
 }
